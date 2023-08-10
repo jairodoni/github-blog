@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: 'var(--font-nunito)',
+        nunito: 'var(--font-nunito)',
       },
 
       colors: {
@@ -28,7 +28,13 @@ module.exports = {
           800: '#071422',
           900: '#040F1A',
         },
+
       },
+
+      
+      marginTop:  {
+        calc: "calc(0px - 6.625rem - 1rem)"
+      }
     },
   },
   plugins: [],

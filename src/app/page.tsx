@@ -1,7 +1,9 @@
+import { Profile } from "./components/Profile";
+
 export default function Home() {
   return (
-    <main className="m-10 h-20 font-bold rounded bg-slate-600 text-2xl uppercase">
-      <h1>MAIN</h1>
-    </main>
+    <div className="min-h-[13.25rem] max-w-[1200px] font-bold rounded text-2xl">
+      <Profile />
+    </div>
   )
 }
