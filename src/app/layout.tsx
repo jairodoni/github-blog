@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${nunito.variable} bg-navyBlue-800 text-navyBlue-200 font-nunito text-base normal-case`}>
+      <body className={`${nunito.variable} bg-navy-blue-800 text-navy-blue-200 font-nunito text-base normal-case`}>
         <Header />
         <main className='max-w-[1200px] my-0 mx-auto px-4 py-4'>
           {children}

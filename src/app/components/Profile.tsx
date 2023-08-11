@@ -2,7 +2,7 @@ import { FaArrowUpRightFromSquare, FaGithub, FaUserGroup } from 'react-icons/fa6
 
 export function Profile() {
   return (
-    <div className=" flex flex-row max-sm:flex-col w-full h-full -mt-[7.625rem] bg-navyBlue-700 rounded-[10px] py-8 px-10">
+    <div className=" flex flex-row max-sm:flex-col w-full h-full -mt-[7.625rem] mb-[4.5rem] bg-navy-blue-700 rounded-[10px] py-8 px-10">
       <img
         src="https://avatars.githubusercontent.com/u/38520302?v=4"
         alt=""
@@ -19,11 +19,11 @@ export function Profile() {
         <p className='font-normal text-base leading-[1.6] max-sm:mb-4'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
         <div className='flex flex-row items-center text-sm'>
           <div className='flex flex-row items-center justify-center mr-6'>
-            <FaGithub size={24} className="text-navyBlue-400" />
+            <FaGithub size={24} className="text-navy-blue-400" />
             <span className="ml-2 text-gray-100 text-base leading-[1.6] font-normal lowercase">jairodoni</span>
           </div>
           <div className='flex flex-row items-center justify-center mr-6'>
-            <FaUserGroup size={24} className="text-navyBlue-400" />
+            <FaUserGroup size={24} className="text-navy-blue-400" />
             <span className='ml-2 text-gray-100 text-base leading-[1.6] font-normal'>20</span>
           </div>
         </div>

@@ -16,7 +16,7 @@ module.exports = {
           400:  '#3294F8',
         },
 
-        navyBlue: {
+        "navy-blue": {
           50:  '#E7EDF4',
           100: '#C4D4E3',
           200: '#AFC2D4',
@@ -28,12 +28,6 @@ module.exports = {
           800: '#071422',
           900: '#040F1A',
         },
-
-      },
-
-      
-      marginTop:  {
-        calc: "calc(0px - 6.625rem - 1rem)"
       }
     },
   },
