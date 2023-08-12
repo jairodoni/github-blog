@@ -28,6 +28,11 @@ module.exports = {
           800: '#071422',
           900: '#040F1A',
         },
+      },
+
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        'custom': 'repeat(2, 1fr)',
       }
     },
   },

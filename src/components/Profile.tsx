@@ -10,7 +10,7 @@ export function Profile() {
       />
       <div className='flex items-start justify-between flex-col'>
         <div className='inline-flex justify-between w-full max-sm:mb-4 font-bold'>
-          <h1 className='text-gray-50 text-2xl leading-[1.3]'>Jairo Doni</h1>
+          <h1 className='text-gray-50 text-2xl leading-[1.3] font-bold'>Jairo Doni</h1>
           <div className='flex flex-row items-center justify-center text-base text-blue-400'>
             <span className='mr-2 text-xs leading-[1.6]'>GITHUB</span>
             <FaArrowUpRightFromSquare size={12} />

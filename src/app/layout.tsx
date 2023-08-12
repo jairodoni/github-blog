@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
 
-import { Header } from './components/Header'
+import { Header } from '../components/Header'
 
 import './global.css'
 
@@ -20,6 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <body className={`${nunito.variable} bg-navy-blue-800 text-navy-blue-200 font-nunito text-base normal-case`}>
         <Header />
         <main className='max-w-[1200px] my-0 mx-auto px-4 py-4'>

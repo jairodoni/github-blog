@@ -1,5 +1,5 @@
-import logo from "../../assets/imgs/logo.svg"
-import backgroundHeader from "../../assets/imgs/backgroundHeader.png"
+import logo from "../assets/imgs/logo.svg"
+import backgroundHeader from "../assets/imgs/backgroundHeader.png"
 import Image from "next/image";
 
 export function Header() {
