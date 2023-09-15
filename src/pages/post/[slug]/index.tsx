@@ -7,7 +7,7 @@ export default function Post() {
   return (
     <div>
       <DetailsPost />
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+      <ReactMarkdown remarkPlugins={[[remarkGfm, { skipHtml: false }]]}>
         # Jairo Doni
         ## 👋 Olá pessoal, bem-vindo ao meu perfil!!!
         * Lists

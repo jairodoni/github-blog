@@ -1,7 +1,10 @@
+
+import { api } from "@/services/api";
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
+
 import { Card } from "../components/Card";
 import { Profile } from "../components/Profile";
 import { SearchForm } from "../components/SearchForm";
-
 export default function Home() {
   return (
     <div className="max-w-[1200px] w-full max-h-screen h-full">
@@ -20,4 +23,17 @@ export default function Home() {
       </div>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await api.get("/users/jairodoni")
+
+  const user = response.data
+
+  return {
+    props: {
+      user,
+    },
+    revalidate: 60 * 60 * 24, // 24 hours
+  }
 }
