@@ -7,7 +7,7 @@
     padding: 0;
     box-sizing: border-box;
 
-    :not(button):focus {
+    :not(button, a):focus {
       outline: 0;
       box-shadow: 0 0 0 2px #3294F8;
     }

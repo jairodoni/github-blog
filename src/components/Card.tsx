@@ -1,24 +1,37 @@
-import Link from "next/link"
+import Link from 'next/link'
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
 
-export function Card() {
+interface CardProps {
+  postId: number
+  title: string
+  body: string
+  createdAt: string
+}
+
+export function Card({ postId, title, body, createdAt }: CardProps) {
+  const formattedDate = formatDistanceToNow(new Date(createdAt), {
+    addSuffix: true,
+    locale: ptBR,
+  })
+
   return (
-    <Link href="/post/asd">
-      <div className="flex flex-col w-full h-[16rem] relative p-8 bg-navy-blue-600 rounded-[10px] leading-[1.6]">
+    <Link href={`/post/${postId}`}>
+      <div className="relative flex h-[16rem] w-full flex-col rounded-[10px] bg-navy-blue-600 p-8 leading-[1.6]">
         <div className="flex flex-row justify-between">
           <div className="h-[5.25rem]">
-
-            <h1 className="max-h-14 max-w-[440px] text-navy-blue-50 text-xl max-md:text-[1.125rem] font-bold title-card break-all">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            <h1 className="title-card max-h-14 max-w-[440px] break-all text-xl font-bold text-navy-blue-50 max-md:text-[1.125rem]">
+              {title}
             </h1>
           </div>
-          <span className="text-sm font-normal text-navy-blue-300 w-20 text-right whitespace-nowrap ... ml-1">
-            Há 1 dia
+          <span className="... ml-1 w-[10rem] whitespace-nowrap text-right text-sm font-normal text-navy-blue-300">
+            {formattedDate}
           </span>
         </div>
         <p className="text-card text-[1rem] font-normal text-navy-blue-200">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          {body}
         </p>
       </div>
     </Link>
-  );
+  )
 }

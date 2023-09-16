@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
 
 import './global.css'
+import { PostsProvider } from '@/context/PostsContexts'
 
 const nunito = Nunito({ subsets: ['latin'], variable: '--font-nunito' })
 
@@ -13,12 +14,15 @@ export const metadata: Metadata = {
 }
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${nunito.variable} bg-navy-blue-800 text-navy-blue-200 font-nunito text-base normal-case`}>
-      <HeaderCustom />
-      <div className='max-w-[1200px] my-0 mx-auto px-4 py-4'>
-
-        <Component {...pageProps} />
-      </div>
-    </main>
+    <PostsProvider>
+      <main
+        className={`${nunito.variable} bg-navy-blue-800 font-nunito text-base normal-case text-navy-blue-200`}
+      >
+        <HeaderCustom />
+        <div className="mx-auto my-0 max-w-[1200px] px-4 py-4">
+          <Component {...pageProps} />
+        </div>
+      </main>
+    </PostsProvider>
   )
 }

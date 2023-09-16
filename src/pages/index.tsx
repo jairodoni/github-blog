@@ -1,32 +1,38 @@
-
-import { api } from "@/services/api";
+import { api } from '@/services/api'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 
-import { Card } from "../components/Card";
-import { Profile } from "../components/Profile";
-import { SearchForm } from "../components/SearchForm";
+import { Card } from '../components/Card'
+import { Profile } from '../components/Profile'
+import { SearchForm } from '../components/SearchForm'
+import { usePosts } from '@/hooks/usePosts'
+
 export default function Home() {
+  const { articles } = usePosts()
+
   return (
-    <div className="max-w-[1200px] w-full max-h-screen h-full">
-      <div className="min-h-[13.25rem] w-full font-bold rounded text-2xl mb-[4.5rem]">
+    <div className="h-full max-h-screen w-full max-w-[1200px]">
+      <div className="mb-[4.5rem] min-h-[13.25rem] w-full rounded text-2xl font-bold">
         <Profile />
       </div>
 
       <SearchForm />
-      <div className="w-full grid grid-cols-custom gap-8 mt-12 max-sm:grid-cols-1">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      <div className="mt-12 grid w-full grid-cols-custom gap-8 max-sm:grid-cols-1">
+        {articles.map((post) => (
+          <Card
+            key={post.id}
+            postId={post.id}
+            title={post.title}
+            body={post.body}
+            createdAt={post.createdAt}
+          />
+        ))}
       </div>
     </div>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await api.get("/users/jairodoni")
+  const response = await api.get('/users/jairodoni')
 
   const user = response.data
 
