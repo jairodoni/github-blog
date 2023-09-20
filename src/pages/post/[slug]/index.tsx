@@ -1,5 +1,7 @@
 import { DetailsPost } from '@/components/DetailsPost'
 import { api } from '@/services/api'
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
@@ -9,6 +11,7 @@ interface PostProps {
     postId: number
     title: string
     body: string
+    commentsNumber: number
     createdAt: string
   }
 }
@@ -16,9 +19,16 @@ interface PostProps {
 export default function Post({ post }: PostProps) {
   return (
     <div>
-      <DetailsPost title={post.title} />
-      <ReactMarkdown remarkPlugins={[[remarkGfm, { skipHtml: false }]]}>
-        {post.body}
+      <DetailsPost
+        title={post?.title}
+        commentsNumber={post?.commentsNumber}
+        createdAt={post?.createdAt}
+      />
+      <ReactMarkdown
+        remarkPlugins={[[remarkGfm, { skipHtml: false }]]}
+        className="text-[1rem]/[1.6]"
+      >
+        {post?.body}
       </ReactMarkdown>
     </div>
   )
@@ -44,9 +54,12 @@ export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({
   const post = {
     title: data.title,
     body: data.body,
-    createdAt: data.created_at,
+    commentsNumber: data.comments,
+    createdAt: formatDistanceToNow(new Date(data.created_at), {
+      addSuffix: true,
+      locale: ptBR,
+    }),
   }
-  console.log('AAAA: ', data)
 
   return {
     props: {
