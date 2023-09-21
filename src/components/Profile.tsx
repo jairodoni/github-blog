@@ -4,7 +4,16 @@ import {
   FaUserGroup,
 } from 'react-icons/fa6'
 
-export function Profile() {
+interface ProfileProps {
+  user: {
+    name: string
+    avatarUrl: string
+    bio: string
+    followers: string
+  }
+}
+
+export function Profile({ user }: ProfileProps) {
   return (
     <div className=" -mt-[7.625rem] mb-[4.5rem] flex h-full w-full flex-row rounded-[10px] bg-navy-blue-700 px-10 py-8 max-sm:flex-col">
       <img
@@ -20,7 +29,7 @@ export function Profile() {
           <a
             className="flex cursor-pointer flex-row items-center justify-center border-none text-base text-blue-400 shadow-none outline-none duration-200 ease-in hover:brightness-50"
             target="_blank"
-            href="https://github.com/jairodoni"
+            href={`https://github.com/${user.name}`}
             rel="noreferrer"
           >
             <span className="mr-2 text-xs leading-[1.6]">GITHUB</span>
@@ -28,21 +37,19 @@ export function Profile() {
           </a>
         </div>
         <p className="text-base font-normal leading-[1.6] max-sm:mb-4">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s.
+          {user.bio}
         </p>
         <div className="flex flex-row items-center text-sm">
           <div className="mr-6 flex flex-row items-center justify-center">
             <FaGithub size={24} className="text-navy-blue-400" />
             <span className="ml-2 text-base font-normal lowercase leading-[1.6] text-gray-100">
-              jairodoni
+              {user.name}
             </span>
           </div>
           <div className="mr-6 flex flex-row items-center justify-center">
             <FaUserGroup size={24} className="text-navy-blue-400" />
             <span className="ml-2 text-base font-normal leading-[1.6] text-gray-100">
-              20
+              {user.followers}
             </span>
           </div>
         </div>

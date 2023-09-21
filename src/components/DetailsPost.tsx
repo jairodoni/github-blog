@@ -10,12 +10,14 @@ interface DetailsPostProps {
   title: string
   commentsNumber: number
   createdAt: string
+  author: string
 }
 
 export function DetailsPost({
   title,
   commentsNumber,
   createdAt,
+  author,
 }: DetailsPostProps) {
   return (
     <div className=" -mt-[7.625rem] mb-[4.5rem] flex h-[10.5rem] w-full flex-col justify-between rounded-[10px] bg-navy-blue-700 px-10 py-8 max-sm:flex-col ">
@@ -27,6 +29,8 @@ export function DetailsPost({
         <a
           className="flex cursor-pointer flex-row items-center justify-center text-base text-blue-400"
           target="_blank"
+          href={`https://github.com/${author}`}
+          rel="noreferrer"
         >
           <span className="mr-2 text-xs leading-[1.6]">GITHUB</span>
           <FaArrowUpRightFromSquare size={12} />
@@ -41,7 +45,7 @@ export function DetailsPost({
         <div className="mr-6 flex flex-row items-center justify-center">
           <FaGithub size={24} className="text-navy-blue-400" />
           <span className="ml-2 text-base font-normal lowercase leading-[1.6] text-gray-100">
-            jairodoni
+            {author}
           </span>
         </div>
         <div className="mr-6 flex flex-row items-center justify-center">

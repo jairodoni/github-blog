@@ -1,18 +1,27 @@
 import { api } from '@/services/api'
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { GetStaticProps } from 'next'
 
 import { Card } from '../components/Card'
 import { Profile } from '../components/Profile'
 import { SearchForm } from '../components/SearchForm'
 import { usePosts } from '@/hooks/usePosts'
 
-export default function Home() {
+interface HomeProps {
+  user: {
+    name: string
+    avatarUrl: string
+    bio: string
+    followers: string
+  }
+}
+
+export default function Home({ user }: HomeProps) {
   const { articles } = usePosts()
 
   return (
     <div className="h-full max-h-screen w-full max-w-[1200px]">
       <div className="mb-[4.5rem] min-h-[13.25rem] w-full rounded text-2xl font-bold">
-        <Profile />
+        <Profile user={user} />
       </div>
 
       <SearchForm />
@@ -36,9 +45,15 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const user = response.data
 
+  const userFormatted = {
+    name: user.login,
+    avatarUrl: user.avatar_url,
+    bio: user.bio,
+    followers: user.followers,
+  }
   return {
     props: {
-      user,
+      user: userFormatted,
     },
     revalidate: 60 * 60 * 24, // 24 hours
   }

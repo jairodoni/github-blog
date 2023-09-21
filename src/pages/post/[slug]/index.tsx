@@ -1,10 +1,14 @@
 import { DetailsPost } from '@/components/DetailsPost'
 import { api } from '@/services/api'
-import { formatDistanceToNow } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
+import ptBR from 'dayjs/locale/pt-br'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+
+dayjs.extend(relativeTime)
+dayjs.locale(ptBR)
 
 interface PostProps {
   post: {
@@ -13,6 +17,7 @@ interface PostProps {
     body: string
     commentsNumber: number
     createdAt: string
+    author: string
   }
 }
 
@@ -23,6 +28,7 @@ export default function Post({ post }: PostProps) {
         title={post?.title}
         commentsNumber={post?.commentsNumber}
         createdAt={post?.createdAt}
+        author={post?.author}
       />
       <ReactMarkdown
         remarkPlugins={[[remarkGfm, { skipHtml: false }]]}
@@ -55,10 +61,8 @@ export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({
     title: data.title,
     body: data.body,
     commentsNumber: data.comments,
-    createdAt: formatDistanceToNow(new Date(data.created_at), {
-      addSuffix: true,
-      locale: ptBR,
-    }),
+    createdAt: dayjs(new Date(data.createdAt)).fromNow(),
+    author: data.user.login,
   }
 
   return {

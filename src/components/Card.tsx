@@ -1,6 +1,9 @@
 import Link from 'next/link'
-import { formatDistanceToNow } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
+import ptBR from 'dayjs/locale/pt-br'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+dayjs.extend(relativeTime)
+dayjs.locale(ptBR)
 
 interface CardProps {
   postId: number
@@ -10,10 +13,7 @@ interface CardProps {
 }
 
 export function Card({ postId, title, body, createdAt }: CardProps) {
-  const formattedDate = formatDistanceToNow(new Date(createdAt), {
-    addSuffix: true,
-    locale: ptBR,
-  })
+  const formattedDate = dayjs(createdAt).fromNow()
 
   return (
     <Link href={`/post/${postId}`}>

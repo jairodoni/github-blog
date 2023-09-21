@@ -3,6 +3,7 @@ import { createContext, ReactNode, useEffect, useState } from 'react'
 
 interface PostsContextData {
   articles: any
+  isLoading: boolean
   loadArticles: () => void
   searchArticles: (query: string) => void
 }
@@ -15,8 +16,10 @@ export const PostsContext = createContext({} as PostsContextData)
 
 export function PostsProvider({ children }: PostsProviderProps) {
   const [articles, setArticles] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   async function loadArticles() {
+    setIsLoading(true)
     // const params = await new URLSearchParams()
     const response = await api.get(
       `https://api.github.com/repos/jairodoni/github-blog/issues`,
@@ -38,22 +41,26 @@ export function PostsProvider({ children }: PostsProviderProps) {
     })
 
     setArticles(posts)
+    setIsLoading(false)
   }
   async function searchArticles(query?: string) {
+    setIsLoading(true)
     // const params = await new URLSearchParams()
     const response = await api.get(
       `/search/issues?q=${query}%20repo:jairodoni/github-blog`,
-      {
-        params: {
-          _sort: 'createdAt',
-          _order: 'desc',
-          q: query,
-        },
-      },
     )
 
-    // const data = response.data
-    // setArticles(data)
+    const posts = response.data.items.map((post) => {
+      return {
+        id: post.number,
+        title: post.title,
+        body: post.body,
+        createdAt: post.created_at,
+      }
+    })
+
+    setArticles(posts)
+    setIsLoading(false)
   }
 
   useEffect(() => {
@@ -61,7 +68,9 @@ export function PostsProvider({ children }: PostsProviderProps) {
   }, [])
 
   return (
-    <PostsContext.Provider value={{ loadArticles, searchArticles, articles }}>
+    <PostsContext.Provider
+      value={{ loadArticles, searchArticles, articles, isLoading }}
+    >
       {children}
     </PostsContext.Provider>
   )
