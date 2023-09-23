@@ -9,6 +9,13 @@ import { SkeletonCard } from '@/components/SkeletonCard'
 import { SkeletonProfile } from '@/components/SkeletonProfile'
 import { SkeletonSearchForm } from '@/components/SkeletonSearchForm'
 
+interface Post {
+  id: number
+  title: string
+  body: string
+  createdAt: string
+}
+
 interface HomeProps {
   user: {
     name: string
@@ -30,7 +37,7 @@ export default function Home({ user }: HomeProps) {
 
       <div className="mt-12 grid w-full grid-cols-custom gap-8 pb-8 max-md:grid-cols-1">
         {!isLoading &&
-          articles.map((post) => (
+          articles.map((post: Post) => (
             <Card
               key={post.id}
               postId={post.id}
@@ -65,6 +72,7 @@ export const getStaticProps: GetStaticProps = async () => {
     bio: user.bio,
     followers: user.followers,
   }
+
   return {
     props: {
       user: userFormatted,
