@@ -9,7 +9,7 @@ interface Post {
 }
 
 interface PostsContextData {
-  articles: Post | []
+  articles: Post[] | []
   isLoading: boolean
   loadArticles: () => void
   searchArticles: (query: string) => void
@@ -22,7 +22,7 @@ interface PostsProviderProps {
 export const PostsContext = createContext({} as PostsContextData)
 
 export function PostsProvider({ children }: PostsProviderProps) {
-  const [articles, setArticles] = useState<Post | []>([])
+  const [articles, setArticles] = useState<Post[] | []>([])
   const [isLoading, setIsLoading] = useState(false)
 
   async function loadArticles() {

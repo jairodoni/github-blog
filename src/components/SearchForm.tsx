@@ -31,6 +31,8 @@ export function SearchForm() {
     await searchArticles(searchText)
   }
 
+  const news = [...articles]
+
   return (
     <form className="leading-[1.6]" onSubmit={handleSubmit(handleSearchForm)}>
       <div className="mb-3 flex justify-between">
@@ -38,7 +40,7 @@ export function SearchForm() {
           Publicações
         </label>
         <span className="text-sm font-normal text-navy-blue-300">
-          {articles.length} publicações
+          {news.length > 0 ? news.length : 0} publicações
         </span>
       </div>
       <label className="relative block">

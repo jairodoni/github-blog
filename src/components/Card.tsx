@@ -2,6 +2,8 @@ import Link from 'next/link'
 import ptBR from 'dayjs/locale/pt-br'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 dayjs.extend(relativeTime)
 dayjs.locale(ptBR)
@@ -30,7 +32,9 @@ export function Card({ postId, title, body, createdAt }: CardProps) {
           </span>
         </div>
         <p className="text-card text-[1rem] font-normal text-navy-blue-200">
-          {body}
+          <ReactMarkdown remarkPlugins={[[remarkGfm, { skipHtml: false }]]}>
+            {body}
+          </ReactMarkdown>
         </p>
       </div>
     </Link>

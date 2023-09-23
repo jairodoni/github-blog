@@ -9,7 +9,7 @@ import {
 
 interface DetailsPostProps {
   title: string
-  commentsNumber: number
+  commentsNumber: string
   createdAt: string
   author: string
 }
@@ -49,19 +49,19 @@ export function DetailsPost({
       <div className="flex flex-row items-center text-sm max-sm:flex-col max-sm:items-start">
         <div className="mr-6 flex flex-row items-center justify-center">
           <FaGithub size={24} className="text-navy-blue-400" />
-          <span className="ml-2 text-base font-normal lowercase leading-[1.6] text-gray-100">
+          <span className="ml-2 text-base font-normal lowercase leading-[1.6] text-gray-300">
             {author}
           </span>
         </div>
         <div className="mr-6 flex flex-row items-center justify-center max-sm:mt-2">
           <FaCalendarDay size={24} className="text-navy-blue-400" />
-          <span className="ml-2 text-base font-normal leading-[1.6] text-gray-100  first-letter:uppercase">
+          <span className="ml-2 text-base font-normal leading-[1.6] text-gray-300  first-letter:uppercase">
             {createdAt}
           </span>
         </div>
         <div className="mr-6 flex flex-row items-center justify-center max-sm:mt-2">
           <FaComment size={24} className="text-navy-blue-400" />
-          <span className="ml-2 text-base font-normal leading-[1.6] text-gray-100">
+          <span className="ml-2 text-base font-normal leading-[1.6] text-gray-300">
             {commentsNumber}
           </span>
         </div>

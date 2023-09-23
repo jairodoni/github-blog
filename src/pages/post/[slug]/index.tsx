@@ -18,7 +18,7 @@ interface PostProps {
     postId: number
     title: string
     body: string
-    commentsNumber: number
+    commentsNumber: string
     createdAt: string
     author: string
   }
@@ -78,7 +78,10 @@ export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({
   const post = {
     title: data.title,
     body: data.body,
-    commentsNumber: data.comments,
+    commentsNumber:
+      data.comments === 1
+        ? `${data.comments} comentário`
+        : `${data.comments} comentários`,
     createdAt: dayjs(new Date(data.createdAt)).fromNow(),
     author: data.user.login,
   }

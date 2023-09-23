@@ -42,13 +42,13 @@ export function Profile({ user }: ProfileProps) {
         <div className="flex flex-row items-center text-sm">
           <div className="mr-6 flex flex-row items-center justify-center">
             <FaGithub size={24} className="text-navy-blue-400" />
-            <span className="ml-2 text-base font-normal lowercase leading-[1.6] text-gray-100">
+            <span className="ml-2 text-base font-normal lowercase leading-[1.6] text-gray-300">
               {user.name}
             </span>
           </div>
           <div className="mr-6 flex flex-row items-center justify-center">
             <FaUserGroup size={24} className="text-navy-blue-400" />
-            <span className="ml-2 text-base font-normal leading-[1.6] text-gray-100">
+            <span className="ml-2 text-base font-normal leading-[1.6] text-gray-300">
               {user.followers}
             </span>
           </div>
