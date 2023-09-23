@@ -13,11 +13,11 @@ module.exports = {
 
       colors: {
         blue: {
-          400:  '#3294F8',
+          400: '#3294F8',
         },
 
-        "navy-blue": {
-          50:  '#E7EDF4',
+        'navy-blue': {
+          50: '#E7EDF4',
           100: '#C4D4E3',
           200: '#AFC2D4',
           300: '#7B96B2',
@@ -32,8 +32,8 @@ module.exports = {
 
       gridTemplateColumns: {
         // Simple 16 column grid
-        'custom': 'repeat(2, 1fr)',
-      }
+        custom: 'repeat(2, minmax(25rem, 1fr))',
+      },
     },
   },
   plugins: [],

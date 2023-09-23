@@ -5,6 +5,9 @@ import { Card } from '../components/Card'
 import { Profile } from '../components/Profile'
 import { SearchForm } from '../components/SearchForm'
 import { usePosts } from '@/hooks/usePosts'
+import { SkeletonCard } from '@/components/SkeletonCard'
+import { SkeletonProfile } from '@/components/SkeletonProfile'
+import { SkeletonSearchForm } from '@/components/SkeletonSearchForm'
 
 interface HomeProps {
   user: {
@@ -16,25 +19,36 @@ interface HomeProps {
 }
 
 export default function Home({ user }: HomeProps) {
-  const { articles } = usePosts()
+  const { articles, isLoading } = usePosts()
 
   return (
     <div className="h-full max-h-screen w-full max-w-[1200px]">
       <div className="mb-[4.5rem] min-h-[13.25rem] w-full rounded text-2xl font-bold">
-        <Profile user={user} />
+        {isLoading ? <SkeletonProfile /> : <Profile user={user} />}
       </div>
+      {isLoading ? <SkeletonSearchForm /> : <SearchForm />}
 
-      <SearchForm />
-      <div className="mt-12 grid w-full grid-cols-custom gap-8 max-sm:grid-cols-1">
-        {articles.map((post) => (
-          <Card
-            key={post.id}
-            postId={post.id}
-            title={post.title}
-            body={post.body}
-            createdAt={post.createdAt}
-          />
-        ))}
+      <div className="mt-12 grid w-full grid-cols-custom gap-8 pb-8 max-md:grid-cols-1">
+        {!isLoading &&
+          articles.map((post) => (
+            <Card
+              key={post.id}
+              postId={post.id}
+              title={post.title}
+              body={post.body}
+              createdAt={post.createdAt}
+            />
+          ))}
+        {isLoading && (
+          <>
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+          </>
+        )}
       </div>
     </div>
   )

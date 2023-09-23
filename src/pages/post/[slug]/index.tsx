@@ -6,6 +6,9 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { usePosts } from '@/hooks/usePosts'
+import Skeleton from 'react-loading-skeleton'
+import { SkeletonDetailsPost } from '@/components/SkeletonDetailsPost'
 
 dayjs.extend(relativeTime)
 dayjs.locale(ptBR)
@@ -22,21 +25,36 @@ interface PostProps {
 }
 
 export default function Post({ post }: PostProps) {
+  const { isLoading } = usePosts()
   return (
-    <div>
-      <DetailsPost
-        title={post?.title}
-        commentsNumber={post?.commentsNumber}
-        createdAt={post?.createdAt}
-        author={post?.author}
-      />
-      <ReactMarkdown
-        remarkPlugins={[[remarkGfm, { skipHtml: false }]]}
-        className="text-[1rem]/[1.6]"
-      >
-        {post?.body}
-      </ReactMarkdown>
-    </div>
+    <>
+      {isLoading && (
+        <div>
+          <SkeletonDetailsPost />
+          <div className="flex w-full flex-col p-[2rem]">
+            <Skeleton height={16} count={10} />
+          </div>
+        </div>
+      )}
+      {!isLoading && (
+        <div>
+          <DetailsPost
+            title={post?.title}
+            commentsNumber={post?.commentsNumber}
+            createdAt={post?.createdAt}
+            author={post?.author}
+          />
+          <div className="p-[2rem]">
+            <ReactMarkdown
+              remarkPlugins={[[remarkGfm, { skipHtml: false }]]}
+              className="text-[1rem]/[1.6]"
+            >
+              {post?.body}
+            </ReactMarkdown>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 

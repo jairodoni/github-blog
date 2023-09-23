@@ -2,6 +2,7 @@ import Link from 'next/link'
 import ptBR from 'dayjs/locale/pt-br'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+
 dayjs.extend(relativeTime)
 dayjs.locale(ptBR)
 

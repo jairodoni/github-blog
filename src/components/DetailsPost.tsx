@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import {
   FaArrowUpRightFromSquare,
   FaGithub,
@@ -20,12 +21,16 @@ export function DetailsPost({
   author,
 }: DetailsPostProps) {
   return (
-    <div className=" -mt-[7.625rem] mb-[4.5rem] flex h-[10.5rem] w-full flex-col justify-between rounded-[10px] bg-navy-blue-700 px-10 py-8 max-sm:flex-col ">
+    <div className=" -mt-[7.625rem] mb-[2rem] flex h-[10.5rem] w-full flex-col justify-between rounded-[10px] bg-navy-blue-700 px-10 py-8 max-sm:h-[15rem] max-sm:flex-col">
       <div className="mb-5 inline-flex w-full justify-between font-bold max-sm:mb-4">
-        <div className="flex flex-row items-center justify-center text-base text-blue-400">
+        <Link
+          className="flex cursor-pointer flex-row items-center justify-center text-base text-blue-400"
+          href="/"
+          rel="noreferrer"
+        >
           <FaChevronLeft size={12} />
           <span className="ml-2 text-xs uppercase leading-[1.6]">Voltar</span>
-        </div>
+        </Link>
         <a
           className="flex cursor-pointer flex-row items-center justify-center text-base text-blue-400"
           target="_blank"
@@ -41,20 +46,20 @@ export function DetailsPost({
         {title}
       </h1>
 
-      <div className="flex flex-row items-center text-sm">
+      <div className="flex flex-row items-center text-sm max-sm:flex-col max-sm:items-start">
         <div className="mr-6 flex flex-row items-center justify-center">
           <FaGithub size={24} className="text-navy-blue-400" />
           <span className="ml-2 text-base font-normal lowercase leading-[1.6] text-gray-100">
             {author}
           </span>
         </div>
-        <div className="mr-6 flex flex-row items-center justify-center">
+        <div className="mr-6 flex flex-row items-center justify-center max-sm:mt-2">
           <FaCalendarDay size={24} className="text-navy-blue-400" />
           <span className="ml-2 text-base font-normal leading-[1.6] text-gray-100  first-letter:uppercase">
             {createdAt}
           </span>
         </div>
-        <div className="mr-6 flex flex-row items-center justify-center">
+        <div className="mr-6 flex flex-row items-center justify-center max-sm:mt-2">
           <FaComment size={24} className="text-navy-blue-400" />
           <span className="ml-2 text-base font-normal leading-[1.6] text-gray-100">
             {commentsNumber}

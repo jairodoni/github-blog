@@ -21,7 +21,7 @@ export function Profile({ user }: ProfileProps) {
         alt=""
         className="mr-8 h-[9.25rem] w-[9.25rem] rounded-[8px] object-cover max-sm:mb-4 max-sm:h-[16rem] max-sm:w-full"
       />
-      <div className="flex flex-col items-start justify-between">
+      <div className="flex w-full flex-col items-start justify-between">
         <div className="inline-flex w-full justify-between font-bold max-sm:mb-4">
           <h1 className="text-2xl font-bold leading-[1.3] text-gray-50">
             Jairo Doni
