@@ -74,11 +74,10 @@ Você pode visualizar o layout do projeto no formato através [desse link](https
 ## **💻 Tecnologias**
 
 
- #### **Website** ([React][react])
+ #### **Website** ([Next][next])
  
-  - **[React][react]**
-  - **[Typescript][typescript]**
   - **[Next][next]**
+  - **[Typescript][typescript]**
   - **[Tailwind CSS][tailwindcss]**
   - **[React Hook Form][react_hook_form]**
   - **[Zod][zod]**
@@ -137,6 +136,7 @@ $ yarn dev
 ## **📚 Referências**
 
 - [Blog Rocketseat](https://blog.rocketseat.com.br/)
+- [Next][next]
 - [ReactJS](https://reactjs.org/docs/getting-started.html) | [ReactJS pt-BR](https://pt-br.reactjs.org/docs/getting-started.html)
 - [Node](https://nodejs.org/en/)
 
