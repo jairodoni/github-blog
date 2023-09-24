@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="todo" title="todo" src=".github/logo.svg" width="300px" />
+    <img alt="github blog" title="github blog" src=".github/logo.svg" width="300px" />
 </h1>
 
 <div align="center">
@@ -10,6 +10,7 @@
   <img alt="Next JS" src="https://img.shields.io/badge/nextjs-%23000000.svg?&style=for-the-badge&logo=next.js&logoColor=white"/>
   ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
   ![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)
+  <img alt="ESLint" src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white"/>
     
 <br>
 
@@ -82,6 +83,8 @@ Você pode visualizar o layout do projeto no formato através [desse link](https
   - **[React Hook Form][react_hook_form]**
   - **[Zod][zod]**
   - **[Day.js][dayjs]**
+  - **[Prettier][prettier]**
+  - **[ESLint][eslint]**
   - **[Node v18.17.0][node]**
 
 > \* Veja o arquivo <kbd>[package.json](./package.json)</kbd>
@@ -186,6 +189,10 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para
 [tailwindcss]: https://tailwindcss.com
 
 [node]: https://nodejs.org/en/
+
+[prettier]: https://prettier.io
+
+[eslint]: https://eslint.org
 
 [vscode]: https://code.visualstudio.com/
 
